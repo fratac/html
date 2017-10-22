@@ -680,9 +680,9 @@ class FormBuilder
      */
     protected function option($display, $value, $selected)
     {
-        $selected = $this->getSelectedValue($value, $selected);
+        $select = $this->getSelectedValue($value, $selected);
 
-        $options = ['value' => $value, 'selected' => $selected];
+        $options = ['value' => $value, 'selected' => $select];
 
         return $this->toHtmlString('<option' . $this->html->attributes($options) . '>' . e($display) . '</option>');
     }
@@ -1089,6 +1089,10 @@ class FormBuilder
     public function getValueAttribute($name, $value = null)
     {
         if (is_null($name)) {
+            return $value;
+        }
+        
+        if (is_array($value)) {
             return $value;
         }
 
