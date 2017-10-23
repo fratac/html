@@ -1095,6 +1095,9 @@ class FormBuilder
         if (is_null($name)) {
             return $value;
         }
+        if (is_array($value)) {
+            return $value;
+        }
 
         if (! is_null($this->old($name)) && $name != '_method') {
             return $this->old($name);
